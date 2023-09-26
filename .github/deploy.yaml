@@ -30,7 +30,6 @@ jobs:
         with:
           name: build
           path: ./build
-
   deploy:
     name: deploy
     needs: build
