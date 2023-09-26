@@ -15,16 +15,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
       - name: Checkout code
         uses: actions/checkout@v3
-
       - name: Install dependencies
         run: npm i
-
       - name: Build app
         run: npm run build
-
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -40,10 +36,10 @@ jobs:
         with:
           name: out
           path: ./out
-
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           commit_message: ${{ github.event.head_commit.message }}
           publish_branch: production_build
+          publish_dir: ./out
